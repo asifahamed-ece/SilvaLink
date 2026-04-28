@@ -684,3 +684,204 @@ body::after {
 .animate-value {
   transition: var(--transition);
 }
+
+/* ---- SPARKLINE CHARTS ---- */
+.sparkline-container {
+  margin-top: 10px;
+  height: 24px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.sparkline {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+.sparkline path {
+  vector-effect: non-scaling-stroke;
+}
+
+/* ---- SMOOTH TRANSITIONS ---- */
+.node-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.node-card.sos-active {
+  animation: nodeSOSPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes nodeSOSPulse {
+  0%, 100% { 
+    border-color: rgba(239, 68, 68, 0.4);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
+  }
+  50% { 
+    border-color: rgba(239, 68, 68, 0.8);
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.3);
+  }
+}
+
+.metric-value {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.metric-bar-fill {
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.node-status {
+  transition: all 0.3s ease;
+}
+
+/* Enhanced hover effects */
+.node-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.12);
+}
+
+.node-card.sos-active:hover {
+  box-shadow: 0 8px 30px rgba(239, 68, 68, 0.25);
+}
+
+/* Chart gradient backgrounds */
+.metric {
+  position: relative;
+  overflow: hidden;
+}
+
+.metric::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, 
+    rgba(255, 255, 255, 0.02) 0%, 
+    transparent 50%,
+    rgba(0, 0, 0, 0.02) 100%);
+  pointer-events: none;
+}
+
+/* Smooth SOS panel transitions */
+.sos-panel {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.sos-panel.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Log entry animations */
+.log-entry {
+  animation: logSlideIn 0.3s ease-out;
+}
+
+@keyframes logSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Stats card value changes */
+.stat-value {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* RSSI bars animation */
+.rssi-bar {
+  transition: all 0.4s ease;
+}
+
+.rssi-bar.active {
+  animation: rssiPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes rssiPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Last seen indicator */
+.last-seen {
+  transition: all 0.3s ease;
+}
+
+/* Responsive chart adjustments */
+@media (max-width: 768px) {
+  .sparkline-container {
+    height: 20px;
+  }
+  
+  .metric-value {
+    font-size: 1.3rem;
+  }
+}
+
+/* Loading state for charts */
+.sparkline-container:empty {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 4px;
+}
+
+/* Chart tooltip (future enhancement) */
+.sparkline-container:hover {
+  cursor: crosshair;
+}
+
+/* ---- MINI CHARTS ---- */
+.mini-chart {
+  width: 100%;
+  height: 60px;
+  margin-top: 8px;
+  display: block;
+}
+.chart-tick {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  fill: var(--text-muted);
+  text-anchor: end;
+  dominant-baseline: middle;
+}
+.chart-axis-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 8px;
+  fill: var(--text-muted);
+  text-anchor: middle;
+}
+.chart-line {
+  transition: d 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Smooth fade for SVG paths */
+.mini-chart path {
+  vector-effect: non-scaling-stroke;
+}
+.metric {
+  background: var(--bg-glass);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  border: 1px solid var(--border-glass);
+  transition: all 0.3s ease;
+}
+.metric:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Node card hover lift */
+.node-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.08);
+}
+.node-card.sos-active:hover {
+  box-shadow: 0 8px 30px rgba(239, 68, 68, 0.15);
+}

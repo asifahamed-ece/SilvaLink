@@ -2,99 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="description" content="SilvaLink Admin Dashboard — Real-time LoRa mesh network monitoring">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SilvaLink — Admin Dashboard</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <!-- ====== HEADER ====== -->
+  <!-- Header -->
   <header class="header">
     <div class="header-inner">
       <div class="brand">
-        <svg class="brand-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+        <svg class="brand-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-          <circle cx="12" cy="12" r="2.5" fill="#10b981" opacity="0.6"/>
         </svg>
         <div>
-          <div class="brand-name">SILVALINK</div>
-          <div class="brand-tag">ADMIN DASHBOARD</div>
+          <div class="brand-name">SILVALINK ADMIN</div>
+          <div class="brand-tag">OFF-GRID MESH NETWORK</div>
         </div>
       </div>
       <div class="conn-badge offline" id="conn-badge">
-        <div class="conn-dot"></div>
+        <span class="conn-dot"></span>
         <span class="conn-label">OFFLINE</span>
       </div>
     </div>
   </header>
 
-  <!-- ====== MAIN ====== -->
+  <!-- Main Content -->
   <main class="main-content">
-
-    <!-- Stats Overview -->
+    <!-- Stats Row -->
     <div class="stats-row">
       <div class="stat-card">
         <div class="stat-label">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a3 3 0 013 3v10a3 3 0 01-6 0V5a3 3 0 013-3z"/></svg>
           TEMPERATURE
         </div>
-        <div class="stat-value temp"><span id="stat-temp">--</span><span class="stat-unit">°C</span></div>
+        <div class="stat-value temp" id="stat-temp">--<span class="stat-unit">°C</span></div>
         <div class="stat-sub" id="stat-temp-sub">Waiting for data</div>
       </div>
-
+      
       <div class="stat-card">
         <div class="stat-label">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c4.97 0 9-4.03 9-9 0-4.97-9-13-9-13S3 8.03 3 13c0 4.97 4.03 9 9 9z"/></svg>
           HUMIDITY
         </div>
-        <div class="stat-value hum"><span id="stat-hum">--</span><span class="stat-unit">%</span></div>
+        <div class="stat-value hum" id="stat-hum">--<span class="stat-unit">%</span></div>
         <div class="stat-sub">Relative humidity</div>
       </div>
-
+      
       <div class="stat-card">
         <div class="stat-label">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h.01M7 20v-4M12 20v-8M17 20V8M22 4v16"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20l-8-8h16l-8 8z"/></svg>
           SIGNAL
         </div>
-        <div class="stat-value rssi"><span id="stat-rssi">--</span><span class="stat-unit">dBm</span></div>
+        <div class="stat-value rssi" id="stat-rssi">--<span class="stat-unit">dBm</span></div>
         <div class="stat-sub">LoRa RSSI</div>
       </div>
-
+      
       <div class="stat-card">
         <div class="stat-label">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
           NODES
         </div>
-        <div class="stat-value nodes"><span id="stat-nodes">0</span></div>
+        <div class="stat-value nodes" id="stat-nodes">0</div>
         <div class="stat-sub">Active trekkers</div>
       </div>
     </div>
 
-    <!-- SOS Alert Banner (hidden by default — shown by JS when SOS arrives) -->
-    <div class="sos-panel" id="sos-panel" style="display:none">
+    <!-- SOS Alert Panel -->
+    <div class="sos-panel" id="sos-panel" style="display: none;">
       <div class="sos-header">
         <div class="sos-title">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#ef4444"><path d="M12 2L1 21h22L12 2zm0 4l7.53 13H4.47L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+          </svg>
           SOS ALERT RECEIVED
         </div>
         <button class="sos-ack-btn" id="sos-ack-btn">ACKNOWLEDGE</button>
       </div>
       <div class="sos-body">
-        <div class="sos-type" id="sos-type">Type: UNKNOWN</div>
-        <div class="sos-msg" id="sos-msg">&mdash;</div>
-        <div class="sos-time" id="sos-time">--:--:--</div>
+        <div class="sos-type" id="sos-type">Type: UNKNOWN — --:--:--</div>
+        <div class="sos-msg" id="sos-msg">No additional message</div>
+        <div class="sos-time" id="sos-time"></div>
       </div>
     </div>
 
-    <!-- Node Cards -->
-    <div class="section-title">Active Nodes</div>
+    <!-- Active Nodes Section -->
+    <h2 class="section-title">Active Nodes</h2>
     <div class="nodes-grid" id="nodes-container">
       <div class="log-empty">Waiting for node data...</div>
     </div>
 
-    <!-- Activity Log -->
-    <div class="section-title">Activity Log</div>
+    <!-- Activity Log Section -->
+    <h2 class="section-title">Activity Log</h2>
     <div class="log-panel">
       <div class="log-list" id="log-list">
         <div class="log-empty">No activity yet. Waiting for LoRa packets...</div>
@@ -103,22 +104,12 @@
 
     <!-- System Status Bar -->
     <div class="system-bar">
-      <div class="sys-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        Uptime: <span id="sys-uptime">0s</span>
-      </div>
-      <div class="sys-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        Packets: <span id="sys-packets">0</span>
-      </div>
-      <div class="sys-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h.01M7 20v-4M12 20v-8M17 20V8M22 4v16"/></svg>
-        LoRa 433MHz SF7
-      </div>
+      <div class="sys-item">Uptime: <span id="sys-uptime">0s</span></div>
+      <div class="sys-item">Packets: <span id="sys-packets">0</span></div>
+      <div class="sys-item">LoRa 433MHz SF7</div>
     </div>
-
   </main>
 
-  <script src="/app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
